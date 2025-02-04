@@ -7,12 +7,10 @@ const getState = ({ getStore, getActions, setStore }) => { // setStore updates t
             createUser: () => {
                 fetch("https://playground.4geeks.com/contact/agendas/DSB", {
                     method: "POST",
-
                 })
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data);
-
                     })
                     .catch((error) => console.log(error));
             },
@@ -48,9 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => { // setStore updates t
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(
-                        payload
-                    ),
+                    body: JSON.stringify(payload),
                 })
                     .then((response) => response.json())
                     .then((data) => {
@@ -61,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => { // setStore updates t
                     })
                     .catch((error) => console.log(error));
             },
+
             deleteContact: (id) => {
                 fetch(`https://playground.4geeks.com/contact/agendas/DSB/contacts/${id}`, {
                     method: "DELETE",
@@ -105,8 +102,11 @@ const getState = ({ getStore, getActions, setStore }) => { // setStore updates t
                         }
                     })
                     .catch((error) => console.log(error));
+            },
 
-
+            // Nueva acción para eliminar todos los contactos
+            deleteAllContacts: () => {
+                setStore({ listContacts: [] }); // Elimina todos los contactos de la lista
             }
         }
     }
